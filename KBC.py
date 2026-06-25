@@ -1,3 +1,26 @@
+# KBC Python Quiz Game A simple console-based quiz game created using Python.
+
+## How Program Works
+
+"""- The game starts by displaying Question 1.
+- Each question has four options (A, B, C, D).
+- The user enters the correct option.
+- If the answer is correct:
+  - The user moves to the next question.
+  - Prize money increases.
+- If the answer is wrong:
+  - The game stops.
+- The game continues until Question 10.
+- After completing all questions, the final winning amount is displayed."""
+
+ 
+
+## Run Project
+
+#```bash
+#python kbc.py
+
+
 questions = [
     "What is the capital of India?",
     "Which planet is known as the Red Planet?",
