@@ -25,9 +25,16 @@ def game():
 
 game()
       
+# game is end here
 
 
 
+
+
+# Number Sign Checker Program
+# This program continuously takes input from the user.
+# It checks whether the entered number is positive, negative, or zero.
+# The program keeps running until the user types "quite" to stop it.
 while True:
    user_input=input("enter the value")
    if user_input=="quite":
@@ -44,15 +51,15 @@ while True:
 
 
 
-
-for i in range(1,100):
-   if(i%3==0 & i%5==0):
-      print(i)
+ 
 
 
 
 
-
+# Sum of Digits Program
+# This program takes a number as input from the user.
+# It separates each digit of the number and calculates the sum of all digits.
+# Finally, it displays the total sum of digits.
 n=int(input("enter a number"))
 sum=1
 
@@ -63,10 +70,14 @@ while n>0:
 
 print(sum)
 
+# this program is end here
 
 
 
-
+# Count Digits Program
+# This program takes a number as input from the user.
+# It goes through each digit of the number and counts how many digits are present.
+# Finally, it displays the total count of digits.
 n=input("enter the number")
 count= 0
 for i in n:
@@ -75,7 +86,9 @@ for i in n:
 
 print("count in number present :",count)
 
+# this program is end here
 
+#Thank you 
 
 
 
