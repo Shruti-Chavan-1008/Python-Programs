@@ -1,6 +1,26 @@
 import random
 
- 
+ # ------------------------------------
+# Guess the Number Game 🎯
+# ------------------------------------
+# This is a simple number guessing game.
+#
+# How to Play:
+# 1. The computer randomly generates a secret number.
+# 2. The player tries to guess the number.
+# 3. If the guess is too high, the program displays "Too High".
+# 4. If the guess is too low, the program displays "Too Low".
+# 5. The game continues until the correct number is guessed.
+# 6. At the end, the program displays the number of attempts taken.
+#
+# This project demonstrates:
+# - Random number generation
+# - User input
+# - Loops
+# - Conditional statements (if-elif-else)
+# - Basic game logic
+# ------------------------------------
+
 def game():
          
        num = random.randint(1, 100)
