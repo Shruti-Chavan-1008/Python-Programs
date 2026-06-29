@@ -1,6 +1,9 @@
-# # python program to translate a message into the secret code language .use the rules to transate the normal English into secert code language
-
-# python program to translate a message into the secret code language .use the rules to transate the normal English into secert code language
+# -----------------------------------------
+# Secret Code Message Generator 🔐
+# -----------------------------------------
+# This Python program converts a normal text
+# message into a secret coded message.
+#
 
 
 word =input("enter the text you want to convert into screte code:  ")
