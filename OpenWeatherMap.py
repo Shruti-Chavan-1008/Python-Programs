@@ -12,16 +12,20 @@ while True:
     print("1. Show All Info")
     print("2. Graph AQI vs Temperature (Max 10)")
     print("3. Graph Humidity vs Wind Speed (Max 10)")
-    print("4. Check safety level of your city ")
+    print("4. Percaution for your city")
     print("5. Check the highest aqi city ")
     print("6. Exit")
 
     choice = input("Enter your choice: ")
 
+
+     # it will help to exist  for program
     if choice == "6":
         print("Exiting program. Goodbye!")
         break
 
+
+    #it take the user input 
     if choice in ["1", "2", "3","4"]:
         country = input("Enter Country (e.g., US, IN): ").strip()
         city = input("Enter City: ").strip()
@@ -31,7 +35,7 @@ while True:
             (df["country"].str.lower() == country.lower())
             & (df["city"].str.lower() == city.lower())
         ].head(10)
-
+    # it will describe the basic infromation related city
     if choice == "1":
         if result.empty:
             print("Country or City not found!")
@@ -43,6 +47,8 @@ while True:
             print(f"Wind Speed: {result.iloc['wind_speed']}")
             print(f"Temperature: {result.iloc['temperature']}")
 
+
+    #shows the graph api vs temperture
     elif choice == "2":
         if result.empty:
             print("No data found!")
@@ -53,6 +59,7 @@ while True:
             plt.tight_layout()
             plt.show()
 
+    #it shows the garph of the humidity vs wind_speed
     elif choice == "3":
         if result.empty:
             print("No data found!")
@@ -64,7 +71,9 @@ while True:
             plt.ylabel("Values")
             plt.tight_layout()
             plt.show()
+ 
 
+    #it checks the aqi info and tell the Percaution to user
     elif choice == "4":
       if result.empty:
         print("No data found!")
@@ -76,7 +85,7 @@ while True:
         if aqi_value < 50:
             print("The Elite Window")
             print("The air is pristine. Absolutely perfect conditions.")
-            print("======Precaution======")
+            print("===============================================Precaution=========================================")
             print("Air Status : Exceptionally clean and crisp.")
             print("Action 1   : Open all doors and windows to fully flush your house with fresh air.")
             print("Action 2   : Perfect day for long runs, hiking, or any intense outdoor sports.")
@@ -85,7 +94,7 @@ while True:
         elif 50 <= aqi_value <= 60:
             print("The Perfect Window")
             print("This narrow window is highly safe and requires no restrictions.")
-            print("======Precaution======")
+            print("============================================Precaution============================================")
             print("Air Status : Clean and safe for almost everyone.")
             print("Action 1   : Great time to ventilate your indoor living spaces.")
             print("Action 2   : Schedule standard outdoor workouts or sports during this time.")
@@ -94,7 +103,7 @@ while True:
         elif 60 < aqi_value <= 100: 
             print("The Caution Window")
             print("The air is acceptable, but pollutants are beginning to accumulate.")
-            print("======Precaution======")
+            print("=======================================Precaution=====================================")
             print("Air Status : Dust and vehicle exhaust are starting to hang in the air.")
             print("Action 1   : Sensitive groups (asthma/allergies) should avoid heavy outdoor cardio.")
             print("Action 2   : Close windows during peak morning and evening traffic rush hours.")
@@ -103,14 +112,14 @@ while True:
         else: # Covers everything greater than 100
             print("The Danger Window")
             print("The air quality is poor and unhealthy for active outdoor exposure.")
-            print("======Precaution======")
+            print("=============================Precaution===============================================")
             print("Air Status : High levels of pollution/smog detected.")
             print("Action 1   : Keep all windows firmly closed to protect indoor air quality.")
             print("Action 2   : Move all athletic activities and workouts strictly indoors.")
             print("Action 3   : Wear an N95 mask if you must spend extended time outside.")
 
 
-
+    # it display the country and city having different aqi
     elif choice == "5":
          
          filtered_df=df[df['aqi']>200][['country','city','aqi']] 
