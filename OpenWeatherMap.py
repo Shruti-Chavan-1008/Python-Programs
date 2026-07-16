@@ -12,7 +12,7 @@ while True:
     print("1. Show All Info")
     print("2. Graph AQI vs Temperature (Max 10)")
     print("3. Graph Humidity vs Wind Speed (Max 10)")
-    print("4. ")
+    print("4. Check safety level of your city ")
     print("5. Check the highest aqi city ")
     print("6. Exit")
 
@@ -66,29 +66,48 @@ while True:
             plt.show()
 
     elif choice == "4":
-        if result.empty:
-            print("No data found!")
-        else:
-            aqi_value=result.iloc['aqi']
-            if 50 <= aqi_value <= 60:
-                print("The Perfect Window")
-                print("This narrow window is highly safe and requires no restrictions, only positive actions.")
+      if result.empty:
+        print("No data found!")
+      else:
+        # Safely extracts the first matching row's AQI
+        aqi_value = result.iloc[0]['aqi']
+        print(f"\nCurrent AQI: {aqi_value}")
+         
+        if aqi_value < 50:
+            print("The Elite Window")
+            print("The air is pristine. Absolutely perfect conditions.")
+            print("======Precaution======")
+            print("Air Status : Exceptionally clean and crisp.")
+            print("Action 1   : Open all doors and windows to fully flush your house with fresh air.")
+            print("Action 2   : Perfect day for long runs, hiking, or any intense outdoor sports.")
+            print("Action 3   : No masks or purifiers needed.")
 
-                print("======Precaution======")
-                print("Air Status : Very clean, crisp, and safe.")
-                print("Action 1: Open all doors and windows to fully ventilate your house.")
-                print("Action 2: Schedule your hardest outdoor workouts, running, or sports during this time.")
-                print("Action 3: No masks or air purifiers are needed at all.")
-            elif 60 < aqi_value <= 80: 
-                print("The Caution Window")
-                print("This narrow window is highly safe and requires no restrictions, only positive actions.")
+        elif 50 <= aqi_value <= 60:
+            print("The Perfect Window")
+            print("This narrow window is highly safe and requires no restrictions.")
+            print("======Precaution======")
+            print("Air Status : Clean and safe for almost everyone.")
+            print("Action 1   : Great time to ventilate your indoor living spaces.")
+            print("Action 2   : Schedule standard outdoor workouts or sports during this time.")
+            print("Action 3   : No restrictions needed for general public.")
 
-                print("======Precaution======")
-                print("Air Status: Dust and vehicle exhaust are starting to hang in the air.")
-                print("Action 1: If you have asthma or allergies, avoid heavy running or lifting weights outdoors.")
-                print("Action 2: Close windows during peak morning and evening traffic rush hours to keep fumes out.")
-                print("Action 3: Switch to indoor exercises (like home workouts or gym sessions) if you are feeling a dry throat.")
+        elif 60 < aqi_value <= 100: 
+            print("The Caution Window")
+            print("The air is acceptable, but pollutants are beginning to accumulate.")
+            print("======Precaution======")
+            print("Air Status : Dust and vehicle exhaust are starting to hang in the air.")
+            print("Action 1   : Sensitive groups (asthma/allergies) should avoid heavy outdoor cardio.")
+            print("Action 2   : Close windows during peak morning and evening traffic rush hours.")
+            print("Action 3   : Switch to indoor gym exercises if you experience any throat irritation.")
 
+        else: # Covers everything greater than 100
+            print("The Danger Window")
+            print("The air quality is poor and unhealthy for active outdoor exposure.")
+            print("======Precaution======")
+            print("Air Status : High levels of pollution/smog detected.")
+            print("Action 1   : Keep all windows firmly closed to protect indoor air quality.")
+            print("Action 2   : Move all athletic activities and workouts strictly indoors.")
+            print("Action 3   : Wear an N95 mask if you must spend extended time outside.")
 
 
 
