@@ -12,16 +12,17 @@ while True:
     print("1. Show All Info")
     print("2. Graph AQI vs Temperature (Max 10)")
     print("3. Graph Humidity vs Wind Speed (Max 10)")
-    print("4. Check the highest aqi city ")
-    print("5. Exit")
+    print("4. ")
+    print("5. Check the highest aqi city ")
+    print("6. Exit")
 
     choice = input("Enter your choice: ")
 
-    if choice == "5":
+    if choice == "6":
         print("Exiting program. Goodbye!")
         break
 
-    if choice in ["1", "2", "3"]:
+    if choice in ["1", "2", "3","4"]:
         country = input("Enter Country (e.g., US, IN): ").strip()
         city = input("Enter City: ").strip()
 
@@ -63,7 +64,35 @@ while True:
             plt.ylabel("Values")
             plt.tight_layout()
             plt.show()
+
     elif choice == "4":
+        if result.empty:
+            print("No data found!")
+        else:
+            aqi_value=result.iloc['aqi']
+            if 50 <= aqi_value <= 60:
+                print("The Perfect Window")
+                print("This narrow window is highly safe and requires no restrictions, only positive actions.")
+
+                print("======Precaution======")
+                print("Air Status : Very clean, crisp, and safe.")
+                print("Action 1: Open all doors and windows to fully ventilate your house.")
+                print("Action 2: Schedule your hardest outdoor workouts, running, or sports during this time.")
+                print("Action 3: No masks or air purifiers are needed at all.")
+            elif 60 < aqi_value <= 80: 
+                print("The Caution Window")
+                print("This narrow window is highly safe and requires no restrictions, only positive actions.")
+
+                print("======Precaution======")
+                print("Air Status: Dust and vehicle exhaust are starting to hang in the air.")
+                print("Action 1: If you have asthma or allergies, avoid heavy running or lifting weights outdoors.")
+                print("Action 2: Close windows during peak morning and evening traffic rush hours to keep fumes out.")
+                print("Action 3: Switch to indoor exercises (like home workouts or gym sessions) if you are feeling a dry throat.")
+
+
+
+
+    elif choice == "5":
          
          filtered_df=df[df['aqi']>200][['country','city','aqi']] 
          print(tabulate(filtered_df, headers='keys', tablefmt='grid', showindex=False))
