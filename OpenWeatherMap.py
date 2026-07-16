@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from tabulate import tabulate
 
 # Load dataset
 df = pd.read_csv("globalAirQuality.csv")
@@ -11,11 +12,12 @@ while True:
     print("1. Show All Info")
     print("2. Graph AQI vs Temperature (Max 10)")
     print("3. Graph Humidity vs Wind Speed (Max 10)")
-    print("4. Exit")
+    print("4. Check the highest aqi city ")
+    print("5. Exit")
 
     choice = input("Enter your choice: ")
 
-    if choice == "4":
+    if choice == "5":
         print("Exiting program. Goodbye!")
         break
 
@@ -61,6 +63,11 @@ while True:
             plt.ylabel("Values")
             plt.tight_layout()
             plt.show()
+    elif choice == "4":
+         
+         filtered_df=df[df['aqi']>200][['country','city','aqi']] 
+         print(tabulate(filtered_df, headers='keys', tablefmt='grid', showindex=False))
+
 
     else:
-        print("Invalid choice! Please select 1, 2, 3, or 4.")
+        print("Invalid choice! Please select 1, 2, 3, 4 or 5.")
