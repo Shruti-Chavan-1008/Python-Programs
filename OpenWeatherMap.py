@@ -37,16 +37,18 @@ while True:
         ].head(10)
     # it will describe the basic infromation related city
     if choice == "1":
-        if result.empty:
-            print("Country or City not found!")
-        else:
-            print(f"\nCountry: {result.iloc['country']}")
-            print(f"City: {result.iloc['city']}")
-            print(f"AQI: {result.iloc['aqi']}")
-            print(f"Humidity: {result.iloc['humidity']}")
-            print(f"Wind Speed: {result.iloc['wind_speed']}")
-            print(f"Temperature: {result.iloc['temperature']}")
-
+     if result.empty:
+        print("Country or City not found!")
+     else:
+        # Pull the column first, then grab the first row [0]
+        print(f"\nCountry: {result['country'].iloc[0]}")
+        print(f"City: {result['city'].iloc[0]}")
+        print(f"AQI: {result['aqi'].iloc[0]}")
+        print(f"Humidity: {result['humidity'].iloc[0]}")
+        print(f"Wind Speed: {result['wind_speed'].iloc[0]}")
+        print(f"Temperature: {result['temperature'].iloc[0]}")
+        print(f'Date of analysis {df['timestamp'].iloc[0]}')
+   
 
     #shows the graph api vs temperture
     elif choice == "2":
