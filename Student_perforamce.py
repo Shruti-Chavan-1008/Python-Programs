@@ -124,7 +124,20 @@ while True:
                   break
 
             elif choice == "1":
-                pass
+                 
+                student_id=int(input("enter your student_id : "))
+                result = bachelors[bachelors["student_id"] == student_id]
+                student = result.iloc[0]
+                if result.empty:
+                    print("Student ID not found!")
+                else:
+                     print(f"\nStudy Time: {student['study_time_hours']}")
+                     print(f"Attendance Percentage: {student['attendance_percent']}")
+                     print(f"Sleep Hours: {student['sleep_hours']}")
+                     print(f"Part-Time Job: {student['part_time_job']}")
+                     print(f"Previous Grade: {student['previous_grade']}")
+                     print(f"Final Exam Score: {student['final_exam_score']}")
+                     print(f"Final grade is : {student['final_grade']}")     
 
             elif choice == "2":
                 pass
@@ -161,7 +174,21 @@ while True:
                 break
 
             elif choice == "1":
-                pass
+                 
+                student_id=int(input("enter your student_id : "))
+                result =masters[masters["student_id"] == student_id]
+                student = result.iloc[0]
+                if result.empty:
+                    print("Student ID not found!")
+                else:
+                     print(f"\nStudy Time: {student['study_time_hours']}")
+                     print(f"Attendance Percentage: {student['attendance_percent']}")
+                     print(f"Sleep Hours: {student['sleep_hours']}")
+                     print(f"Part-Time Job: {student['part_time_job']}")
+                     print(f"Previous Grade: {student['previous_grade']}")
+                     print(f"Final Exam Score: {student['final_exam_score']}")
+                     print(f"Final grade is : {student['final_grade']}")     
+
 
             elif choice == "2":
                 pass
@@ -198,7 +225,20 @@ while True:
                 break
 
             elif choice == "1":
-                pass
+                 
+                student_id=int(input("enter your student_id : "))
+                result = phd[phd["student_id"] == student_id]
+                student = result.iloc[0]
+                if result.empty:
+                    print("Student ID not found!")
+                else:
+                     print(f"\nStudy Time: {student['study_time_hours']}")
+                     print(f"Attendance Percentage: {student['attendance_percent']}")
+                     print(f"Sleep Hours: {student['sleep_hours']}")
+                     print(f"Part-Time Job: {student['part_time_job']}")
+                     print(f"Previous Grade: {student['previous_grade']}")
+                     print(f"Final Exam Score: {student['final_exam_score']}")
+                     print(f"Final grade is : {student['final_grade']}")     
 
             elif choice == "2":
                 pass
@@ -231,7 +271,21 @@ while True:
                 break
 
             elif choice == "1":
-                pass
+                 
+                student_id=int(input("enter your student_id : "))
+                result = student_data[student_data["student_id"] == student_id]
+                student = result.iloc[0]
+                if result.empty:
+                    print("Student ID not found!")
+                else:
+                     print(f'Parntal_eduaction : {student['Parental_eduaction']}')
+                     print(f"\nStudy Time: {student['study_time_hours']}")
+                     print(f"Attendance Percentage: {student['attendance_percent']}")
+                     print(f"Sleep Hours: {student['sleep_hours']}")
+                     print(f"Part-Time Job: {student['part_time_job']}")
+                     print(f"Previous Grade: {student['previous_grade']}")
+                     print(f"Final Exam Score: {student['final_exam_score']}")
+                     print(f"Final grade is : {student['final_grade']}") 
 
             elif choice == "2":
                 pass
