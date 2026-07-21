@@ -6,30 +6,65 @@ student_data = pd.read_csv("student_performance_dataset.csv")
 
 # student details fucnction
 
-def student_deatils(data):
-    if data.empty:
-        print("No student records found.")
-        try:
-         student_id = int(input("Enter Student ID: "))
-        except ValueError:
-          print("Please enter a valid numeric Student ID.")
-          return
-        
-        result = data[data["student_id"] == student_id]
-        student_id=int(input("enter your student_id : "))
-        result = data[data["student_id"] == student_id]
-        student = result.iloc[0]
-        if result.empty:
-                    print("Student ID not found!")
-        else:
-                     print(f"\nStudy Time: {student['study_time_hours']}")
-                     print(f"Attendance Percentage: {student['attendance_percent']}")
-                     print(f"Sleep Hours: {student['sleep_hours']}")
-                     print(f"Part-Time Job: {student['part_time_job']}")
-                     print(f"Previous Grade: {student['previous_grade']}")
-                     print(f"Final Exam Score: {student['final_exam_score']}")
-                     print(f"Final grade is : {student['final_grade']}")
-    pass
+def student_details(data):
+    student_id = int(input("Enter your Student ID: "))
+
+    result = data[data["student_id"] == student_id]
+
+    if result.empty:
+        print("Student ID not found!")
+        return
+
+    student = result.iloc[0]
+
+    print("\n========== Student Details ==========")
+    print(f"Student ID: {student['student_id']}")
+    print(f"Parental Education: {student['parental_education']}")
+    print(f"Study Time: {student['study_time_hours']}")
+    print(f"Attendance Percentage: {student['attendance_percent']}")
+    print(f"Sleep Hours: {student['sleep_hours']}")
+    print(f"Part-Time Job: {student['part_time_job']}")
+    print(f"Previous Grade: {student['previous_grade']}")
+    print(f"Final Exam Score: {student['final_exam_score']}")
+    print(f"Final Grade: {student['final_grade']}")
+  
+
+#score summary function
+
+def Score_summary(data):
+                print("\n========== Score Summary ==========")
+                print(f"Total Student   : {len(data)}\n")
+                print(f"final Exam Score ")
+                print(f"-----------------------")
+                print(f"Average Score : { data["final_exam_score"].mean()}")
+                print(f"Highest Score : { data["final_exam_score"].max()}")
+                print(f"Lowest Score  : { data["final_exam_score"].min()}")
+                print(f"\nPrevious Grade ")
+                print(f"-----------------------")
+                print(f"Average Score : { data["previous_grade"].mean()}")
+                print(f"\nAttendence")
+                print(f"-----------------------")
+                print(f"Average : { data["attendance_percent"].mean()}")
+                print(f"Highest : { data["attendance_percent"].max()}")
+                print(f"Lowest  : { data["attendance_percent"].min()}")
+
+                print(f"\nStudy Hours")
+                print(f"-----------------------")
+                print(f"Average  : { data["study_time_hours"].mean()}")
+                print(f"Maximum  : { data["study_time_hours"].max()}")
+                print(f"Minimum  : { data["study_time_hours"].min()}")
+                print(f"\nSleep Hours")
+                print(f"-----------------------")
+                print(f"Average : { data["sleep_hours"].mean()}")
+                print(f"\nGrade Distribution")
+                print(f"-----------------------")
+                print(f"Grade A : {data[data['final_grade']=='A'].shape[0]}")
+                print(f"Grade B : {data[data['final_grade']=='B'].shape[0]}")
+                print(f"Grade C : {data[data['final_grade']=='C'].shape[0]}")
+                print(f"Grade D : {data[data['final_grade']=='D'].shape[0]}")
+                print(f"Grade F : {data[data['final_grade']=='F'].shape[0]}")
+               
+ 
 
 while True:
     print("\n===== Select Parental Education =====")
@@ -69,43 +104,13 @@ while True:
                   break
 
             elif choice == "1":
-                student_deatils(high_school)
+               student_details(high_school)
 
 
             elif choice == "2":
+                Score_summary(high_school)
+           
 
-                print("\n========== Score Summary ==========")
-                print(f"Total Student   : {len(high_school)}\n")
-                print(f"final Exam Score ")
-                print(f"-----------------------")
-                print(f"Average Score : { high_school["final_exam_score"].mean()}")
-                print(f"Highest Score : { high_school["final_exam_score"].max()}")
-                print(f"Lowest Score  : { high_school["final_exam_score"].min()}")
-                print(f"\nPrevious Grade ")
-                print(f"-----------------------")
-                print(f"Average Score : { high_school["previous_grade"].mean()}")
-                print(f"\nAttendence")
-                print(f"-----------------------")
-                print(f"Average : { high_school["attendance_percent"].mean()}")
-                print(f"Highest : { high_school["attendance_percent"].max()}")
-                print(f"Lowest  : { high_school["attendance_percent"].min()}")
-
-                print(f"\nStudy Hours")
-                print(f"-----------------------")
-                print(f"Average  : { high_school["study_time_hours"].mean()}")
-                print(f"Maximum  : { high_school["study_time_hours"].max()}")
-                print(f"Minimum  : { high_school["study_time_hours"].min()}")
-                print(f"\nSleep Hours")
-                print(f"-----------------------")
-                print(f"Average : { high_school["sleep_hours"].mean()}")
-                print(f"\nGrade Distribution")
-                print(f"-----------------------")
-                print(f"Grade A : {high_school[high_school['final_grade']=='A'].shape[0]}")
-                print(f"Grade B : {high_school[high_school['final_grade']=='B'].shape[0]}")
-                print(f"Grade C : {high_school[high_school['final_grade']=='C'].shape[0]}")
-                print(f"Grade D : {high_school[high_school['final_grade']=='D'].shape[0]}")
-                print(f"Grade F : {high_school[high_school['final_grade']=='F'].shape[0]}")
-               
             elif choice == "3":
                 pass
 
@@ -138,23 +143,10 @@ while True:
                   break
 
             elif choice == "1":
-                 
-                student_id=int(input("enter your student_id : "))
-                result = bachelors[bachelors["student_id"] == student_id]
-                student = result.iloc[0]
-                if result.empty:
-                    print("Student ID not found!")
-                else:
-                     print(f"\nStudy Time: {student['study_time_hours']}")
-                     print(f"Attendance Percentage: {student['attendance_percent']}")
-                     print(f"Sleep Hours: {student['sleep_hours']}")
-                     print(f"Part-Time Job: {student['part_time_job']}")
-                     print(f"Previous Grade: {student['previous_grade']}")
-                     print(f"Final Exam Score: {student['final_exam_score']}")
-                     print(f"Final grade is : {student['final_grade']}")     
+                 student_details(bachelors)
 
             elif choice == "2":
-                pass
+                Score_summary(bachelors)
 
             elif choice == "3":
                 pass
@@ -188,24 +180,11 @@ while True:
                 break
 
             elif choice == "1":
-                 
-                student_id=int(input("enter your student_id : "))
-                result =masters[masters["student_id"] == student_id]
-                student = result.iloc[0]
-                if result.empty:
-                    print("Student ID not found!")
-                else:
-                     print(f"\nStudy Time: {student['study_time_hours']}")
-                     print(f"Attendance Percentage: {student['attendance_percent']}")
-                     print(f"Sleep Hours: {student['sleep_hours']}")
-                     print(f"Part-Time Job: {student['part_time_job']}")
-                     print(f"Previous Grade: {student['previous_grade']}")
-                     print(f"Final Exam Score: {student['final_exam_score']}")
-                     print(f"Final grade is : {student['final_grade']}")     
+                 student_details(masters)  
 
 
             elif choice == "2":
-                pass
+               Score_summary(masters)
 
             elif choice == "3":
                 pass
@@ -239,23 +218,10 @@ while True:
                 break
 
             elif choice == "1":
-                 
-                student_id=int(input("enter your student_id : "))
-                result = phd[phd["student_id"] == student_id]
-                student = result.iloc[0]
-                if result.empty:
-                    print("Student ID not found!")
-                else:
-                     print(f"\nStudy Time: {student['study_time_hours']}")
-                     print(f"Attendance Percentage: {student['attendance_percent']}")
-                     print(f"Sleep Hours: {student['sleep_hours']}")
-                     print(f"Part-Time Job: {student['part_time_job']}")
-                     print(f"Previous Grade: {student['previous_grade']}")
-                     print(f"Final Exam Score: {student['final_exam_score']}")
-                     print(f"Final grade is : {student['final_grade']}")     
+                student_details(phd) 
 
             elif choice == "2":
-                pass
+                 Score_summary(phd)
 
             elif choice == "3":
                 pass
@@ -285,24 +251,14 @@ while True:
                 break
 
             elif choice == "1":
-                 
-                student_id=int(input("enter your student_id : "))
-                result = student_data[student_data["student_id"] == student_id]
-                student = result.iloc[0]
-                if result.empty:
-                    print("Student ID not found!")
-                else:
-                     print(f'Parntal_eduaction : {student['Parental_eduaction']}')
-                     print(f"\nStudy Time: {student['study_time_hours']}")
-                     print(f"Attendance Percentage: {student['attendance_percent']}")
-                     print(f"Sleep Hours: {student['sleep_hours']}")
-                     print(f"Part-Time Job: {student['part_time_job']}")
-                     print(f"Previous Grade: {student['previous_grade']}")
-                     print(f"Final Exam Score: {student['final_exam_score']}")
-                     print(f"Final grade is : {student['final_grade']}") 
+                 student_id=int(input("enter your student_id : "))
+                 result = student_data[student_data["student_id"] == student_id]
+                 student = result.iloc[0]
+                 print(f'Parntal_eduaction : {student['Parental_eduaction']}')
+                 student_details(student_data)
 
             elif choice == "2":
-                pass
+                Score_summary(student_data)
 
             elif choice == "3":
                 pass
