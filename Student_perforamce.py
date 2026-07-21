@@ -3,6 +3,34 @@ import numpy as np
 
 student_data = pd.read_csv("student_performance_dataset.csv")
 
+
+# student details fucnction
+
+def student_deatils(data):
+    if data.empty:
+        print("No student records found.")
+        try:
+         student_id = int(input("Enter Student ID: "))
+        except ValueError:
+          print("Please enter a valid numeric Student ID.")
+          return
+        
+        result = data[data["student_id"] == student_id]
+        student_id=int(input("enter your student_id : "))
+        result = data[data["student_id"] == student_id]
+        student = result.iloc[0]
+        if result.empty:
+                    print("Student ID not found!")
+        else:
+                     print(f"\nStudy Time: {student['study_time_hours']}")
+                     print(f"Attendance Percentage: {student['attendance_percent']}")
+                     print(f"Sleep Hours: {student['sleep_hours']}")
+                     print(f"Part-Time Job: {student['part_time_job']}")
+                     print(f"Previous Grade: {student['previous_grade']}")
+                     print(f"Final Exam Score: {student['final_exam_score']}")
+                     print(f"Final grade is : {student['final_grade']}")
+    pass
+
 while True:
     print("\n===== Select Parental Education =====")
     print("1. High School")
@@ -41,21 +69,7 @@ while True:
                   break
 
             elif choice == "1":
-                student_id=int(input("enter your student_id : "))
-                result = high_school[high_school["student_id"] == student_id]
-                student = result.iloc[0]
-                if result.empty:
-                    print("Student ID not found!")
-                else:
-                     print(f"\nStudy Time: {student['study_time_hours']}")
-                     print(f"Attendance Percentage: {student['attendance_percent']}")
-                     print(f"Sleep Hours: {student['sleep_hours']}")
-                     print(f"Part-Time Job: {student['part_time_job']}")
-                     print(f"Previous Grade: {student['previous_grade']}")
-                     print(f"Final Exam Score: {student['final_exam_score']}")
-                     print(f"Final grade is : {student['final_grade']}")     
-
-
+                student_deatils(high_school)
 
 
             elif choice == "2":
