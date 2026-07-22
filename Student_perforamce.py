@@ -362,7 +362,7 @@ while True:
                 Performance(masters)
 
             elif choice == "4":
-                pass
+                plotting_graphs(masters)
 
             else:
                 print("Invalid Choice")
@@ -399,7 +399,7 @@ while True:
                Performance(phd)
 
             elif choice == "4":
-                pass
+                plotting_graphs(phd)
 
             else:
                 print("Invalid Choice")
@@ -436,8 +436,7 @@ while True:
                 Performance(student_data) 
 
             elif choice == "4":
-                pass
-
+               plotting_graphs(student_data)
             else:
                 print("Invalid Choice")
 
