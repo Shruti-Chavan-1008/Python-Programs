@@ -239,7 +239,7 @@ while True:
                 Score_summary(bachelors)
 
             elif choice == "3":
-                pass
+                Performance(bachelors)
 
             elif choice == "4":
                 pass
@@ -277,7 +277,7 @@ while True:
                Score_summary(masters)
 
             elif choice == "3":
-                pass
+                Performance(masters)
 
             elif choice == "4":
                 pass
@@ -314,7 +314,7 @@ while True:
                  Score_summary(phd)
 
             elif choice == "3":
-                pass
+               Performance(phd)
 
             elif choice == "4":
                 pass
@@ -351,7 +351,7 @@ while True:
                 Score_summary(student_data)
 
             elif choice == "3":
-                pass
+                Performance(student_data) 
 
             elif choice == "4":
                 pass
