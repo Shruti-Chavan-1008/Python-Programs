@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+
 
 student_data = pd.read_csv("student_performance_dataset.csv")
 
@@ -156,6 +158,86 @@ def Performance(data):
      else:
        print("• Your performance is consistent. Aim for a higher score next time.")
 
+
+
+
+def plotting_graphs(data):
+
+    while True:
+
+        print("\n========== Charts & Graphs ==========")
+        print("1. Final Grade Distribution")
+        print("2. Study Hours vs Final Exam Score")
+        print("3. Attendance vs Final Exam Score")
+        print("4. Back")
+
+        graph_choice = input("Enter your choice: ")
+
+        # 1. Final Grade Distribution
+        if graph_choice == "1":
+
+            grade_count = data["final_grade"].value_counts().sort_index()
+
+            plt.figure(figsize=(8, 5))
+
+            plt.bar(
+                grade_count.index,
+                grade_count.values
+            )
+
+            plt.title("Final Grade Distribution")
+            plt.xlabel("Final Grade")
+            plt.ylabel("Number of Students")
+            plt.grid(axis="y")
+            plt.tight_layout()
+            plt.show()
+
+        # 2. Study Hours vs Final Score
+        elif graph_choice == "2":
+
+            plt.figure(figsize=(8, 5))
+
+            plt.scatter(
+                data["study_time_hours"],
+                data["final_exam_score"]
+            )
+
+            plt.title("Study Hours vs Final Exam Score")
+            plt.xlabel("Study Time Hours")
+            plt.ylabel("Final Exam Score")
+            plt.grid()
+            plt.tight_layout()
+            plt.show()
+
+        # 3. Attendance vs Final Score
+        elif graph_choice == "3":
+
+            plt.figure(figsize=(8, 5))
+
+            plt.scatter(
+                data["attendance_percent"],
+                data["final_exam_score"]
+            )
+
+            plt.title("Attendance vs Final Exam Score")
+            plt.xlabel("Attendance Percentage")
+            plt.ylabel("Final Exam Score")
+            plt.grid()
+            plt.tight_layout()
+            plt.show()
+
+        # 4. Back
+        elif graph_choice == "4":
+
+            print("Returning to previous menu...")
+            break
+
+        else:
+            print("Invalid choice. Please enter between 1 and 4.")
+
+
+
+
 while True:
     print("\n===== Select Parental Education =====")
     print("1. High School")
@@ -205,7 +287,7 @@ while True:
                  Performance(high_school)
 
             elif choice == "4":
-                pass
+                plotting_graphs(high_school)
 
             else:
                 print("Invalid Choice")
