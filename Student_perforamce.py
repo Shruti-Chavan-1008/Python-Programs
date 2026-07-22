@@ -64,7 +64,97 @@ def Score_summary(data):
                 print(f"Grade D : {data[data['final_grade']=='D'].shape[0]}")
                 print(f"Grade F : {data[data['final_grade']=='F'].shape[0]}")
                
- 
+# Performance Report Function
+def Performance(data):
+     student_id = int(input("Enter your Student ID: "))
+
+     result = data[data["student_id"] == student_id]
+
+     if result.empty:
+          print("Student ID not found!")
+          return
+     
+
+     student = result.iloc[0]
+     print("\n==========PERFORMANCE EVALUATION ==========")
+     print(f"Student ID: {student['student_id']}")
+     print(f"Previous Grade: {student['previous_grade']}")
+     print(f"Final Exam Score: {student['final_exam_score']}")
+     print(f"Final Grade: {student['final_grade']}")
+     print(f"Study Time: {student['study_time_hours']}")
+     print(f"Attendance Percentage: {student['attendance_percent']}")
+     print(f"Sleep Hours: {student['sleep_hours']}")
+
+    #to check the final score
+     if student['final_exam_score'] >= 90:
+         print("Exam performace : Excellent  ")
+     elif student['final_exam_score'] >= 75:
+        print("Exam performace :  Good  ")
+     elif student['final_exam_score'] >= 60:
+         print("Exam performace :  Average ")
+     else :
+         print("Need Improment")
+
+    # to check the attends
+     if student['attendance_percent'] >= 90:
+         print("\n\nAttendence: Excellent  ")
+     elif student['attendance_percent'] >= 75:
+        print("Attendence:  Good  ")
+     elif student['attendance_percent'] >= 60:
+         print("Attendence:  Average ")
+     else :
+         print("Need Improment")
+
+     #to check the sleep 
+     if student['attendance_percent'] >= 7:
+         print("Sleep Quality  :  Healthy  ")
+     else :
+         print("Sleep Quality : Need Improment")
+     
+     if student['final_exam_score'] > student['previous_grade']:
+         print("Academic Progress : Improved ")  
+     elif student['final_exam_score'] == student['previous_grade'] :
+         print("Academic Progress : Stable ")
+        
+     else:
+        print("Academic Progress : Declind")
+
+
+     print("\n========== Recommendation ==========")
+
+# Final Exam Score
+     if student["final_exam_score"] < 50:
+         print("• Increase daily study time.")
+         print("• Practice previous year question papers.")
+
+     elif student["final_exam_score"] < 75:
+       print("• Revise difficult topics regularly.")
+       print("• Solve more mock tests.")
+
+     else:
+       print("• Excellent academic performance. Keep it up!")
+
+# Attendance
+     if student["attendance_percent"] < 75:
+       print("• Improve your attendance for better understanding of subjects.")
+
+# Study Hours
+     if student["study_time_hours"] < 4:
+        print("• Try to study at least 4-6 hours every day.")
+
+# Sleep Hours
+     if student["sleep_hours"] < 7:
+       print("• Get at least 7-8 hours of sleep for better concentration.")
+
+# Previous Grade Comparison
+     if student["final_exam_score"] > student["previous_grade"]:
+        print("• Great! Your performance has improved.")
+
+     elif student["final_exam_score"] < student["previous_grade"]:
+       print("• Your performance has dropped. Focus on revision.")
+  
+     else:
+       print("• Your performance is consistent. Aim for a higher score next time.")
 
 while True:
     print("\n===== Select Parental Education =====")
@@ -112,7 +202,7 @@ while True:
            
 
             elif choice == "3":
-                pass
+                 Performance(high_school)
 
             elif choice == "4":
                 pass
